@@ -1,28 +1,32 @@
-import { useState } from "react";
+import React from "react";
 import { nanoid } from "nanoid";
 
-const TodoInput = ({ addTodo }) => {
-    const [text, setText] = useState("");
+function TodoInput({ addTodo }) {
+  const [text, setText] = React.useState("");
 
-    let handleText = ({ target }) => {
-        setText(target.value)      
-    }
+  const handleChange = ({ target }) => {
+    setText(target.value);
+  };
+  const handleAdd = () => {
+    const data = {
+      id: nanoid(7),
+      title: text,
+      status: false,
+    };
+    addTodo(data);
+  };
 
-    let handleAdd = () => {
-        const data = {
-            id: nanoid(4),
-            title: text,
-            status: false
-        };
-        addTodo(data);
-    }
-
-    return (
-        <>
-            <input type="text" placeholder="type your task" onChange={handleText} value={text} />
-            <button onClick={handleAdd}>Add Todo</button>
-        </>
-    )
+  return (
+    <>
+      <input
+        type="text"
+        placeholder="Enter Todo"
+        value={text}
+        onChange={handleChange}
+      ></input>
+      <button onClick={handleAdd}>Add Todo</button>
+    </>
+  );
 }
 
-export default TodoInput;
+export { TodoInput };

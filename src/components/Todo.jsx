@@ -1,31 +1,28 @@
-import { useState } from "react";
+import React from "react";
+import { TodoInput } from "./TodoItem";
+import { TodoList } from "./TodoList";
 
-import TodoInput from "./TodoItem";
+function Todo({ todoList }) {
+  const [list, setList] = React.useState([]);
 
-import TodoList  from "./TodoList";
-
-const Todo = () => {
-    const [list, setList] = useState([]);
-    const handleAdd = (todo) => {
-        setList([...list , todo])
-    }
-    const handleToggle = (id) => {
-        const updatelist = list.map((e) => {
-            if (e.id === id) {
-                e.status = !e.status;
-            }
-            return e;
-        });
-        setList(updatelist);
-    }
-
-
-
-    return (<div>
-        <TodoInput addTodo={handleAdd} />
-        <TodoList list={list} handleToggle={handleToggle} />
-    </div>)
+  const handleAdd = (todo) => {
+    setList([...list, todo]);
+  };
+  const handleToggle = (id) => {
+    const updatelist = list.map((e) => {
+      if (e.id === id) {
+        e.status = !e.status;
+      }
+      return e;
+    });
+    setList(updatelist);
+  };
+  return (
+    <div>
+      <h1>todo app</h1>
+      <TodoInput addTodo={handleAdd}></TodoInput>
+      <TodoList list={list} handleToggle={handleToggle}></TodoList>
+    </div>
+  );
 }
-
-
 export default Todo;
