@@ -1,12 +1,9 @@
 import { nanoid } from "nanoid";
 import React, { useState } from "react";
 import Button from "@mui/material/Button";
-
 import TextField from "@mui/material/TextField";
-import Stack from "@mui/material/Stack";
-
 import Checkbox from "@mui/material/Checkbox";
-import { deepOrange, deepPurple } from "@mui/material/colors";
+import { deepOrange } from "@mui/material/colors";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import Divider from "@mui/material/Divider";
@@ -32,12 +29,6 @@ function Todo() {
     }
     setTodo("");
   };
-
-  function stringAvatar(name) {
-    return {
-      children: `${name.split(" ")[0][0]}${name.split(" ")[1][0]}`,
-    };
-  }
 
   console.log(list);
   return (
@@ -68,18 +59,13 @@ function Todo() {
           >
             <ListItem alignItems="center">
               <ListItemAvatar>
-                <Avatar sx={{ bgcolor: deepOrange[500] }}>{i.val}</Avatar>
+                <Avatar sx={{ bgcolor: deepOrange[400] }}>{i.val}</Avatar>
               </ListItemAvatar>
               <ListItemText primary={i.val} />
               <Checkbox />
             </ListItem>
             <Divider variant="inset" component="li" />
           </List>
-
-          // <p key={i.key}>
-          //   {i.val}
-          //   <Checkbox />
-          // </p>
         ))}
       </div>
     </div>
